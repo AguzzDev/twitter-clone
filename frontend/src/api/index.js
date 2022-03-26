@@ -6,7 +6,7 @@ const APITOKEN = () => {
   const user = JSON.parse(localStorage.getItem("profile"))
 
   return axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: "https://twitter-db-app.herokuapp.com",
     headers: { token: `Bearer ${user.token}` },
   })
 }
