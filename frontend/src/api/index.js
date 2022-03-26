@@ -6,7 +6,7 @@ const APITOKEN = () => {
   const user = JSON.parse(localStorage.getItem("profile"))
 
   return axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: process.env.REACT_APP_API_URL,
     headers: { token: `Bearer ${user.token}` },
   })
 }
