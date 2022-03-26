@@ -1,12 +1,13 @@
 import axios from "axios"
 
-const API = axios.create({ baseURL: "http://localhost:4000" })
+const url = "https://twitter-db-app.herokuapp.com"
+const API = axios.create({ baseURL: url })
 
 const APITOKEN = () => {
   const user = JSON.parse(localStorage.getItem("profile"))
 
   return axios.create({
-    baseURL: "https://twitter-db-app.herokuapp.com",
+    baseURL: url,
     headers: { token: `Bearer ${user.token}` },
   })
 }
