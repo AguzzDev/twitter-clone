@@ -1,0 +1,85 @@
+.ReactModalPortal > div{
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: opacity .2s ease-in-out;
+    z-index: 999;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+/* Fondo de modal */
+.modal-fondo {
+    background-color: rgba(66, 83, 97, 0.4);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+.modal-fondo-tweetmodal {
+    background-color: rgba(66, 83, 97, 0.4);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+.modal-fondo-changestyles {
+    background-color: rgba(66, 83, 97, 0.4);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+/* Modal */
+.modal {
+    background-color: black;
+    border-radius: 15px;
+    width: 35%;
+}
+.modal-tweet{
+    border-radius: 15px;
+    width: 35%;
+    padding: 10px;
+}
+.modal-changestyles{
+    border-radius: 15px;
+    width: 40%;
+    padding: 10px;
+}
+.modal-profileimage{
+    background-color: transparent;
+}
+@media only screen and (max-width: 1300px) {
+    .modal {
+     width:70%;
+    }
+    .modal-tweet{
+        width:50%;
+       }
+       .modal-changestyles{
+        width:50%;
+       }
+  }
+  @media only screen and (max-width: 600px) {
+    .modal {
+     width:100%;
+    }
+    .modal-tweet {
+        width:100%;
+       }
+       .modal-changestyles{
+        width:100%;
+       }
+  }
