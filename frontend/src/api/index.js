@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const url = "https://twitter-db-app.herokuapp.com"
+const url = "https://twitter-backend-bdv9.onrender.com"
 const API = axios.create({ baseURL: url })
 
 const APITOKEN = () => {

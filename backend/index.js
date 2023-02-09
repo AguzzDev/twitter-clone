@@ -18,7 +18,7 @@ const server = http.createServer(app)
 
 const Whitelist = [
   "http://localhost:3000",
-  "https://aguzzdev-twitter.netlify.app",
+  "https://twitter-backend-bdv9.onrender.com",
 ]
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
