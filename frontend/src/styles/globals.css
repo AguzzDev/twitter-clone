@@ -1,8 +1,23 @@
+.loading-spinner {
+  animation: loading-spinner-animation 1.5s infinite linear;
+}
+@keyframes loading-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+  .placeholder-base::placeholder {
+    @apply text-base;
+  }
   ::placeholder {
     @apply text-bluelight1 text-xl;
   }
@@ -10,10 +25,10 @@
     @apply p-0 m-0 box-border;
   }
   body {
-    @apply bg-white dark:bg-body overflow-x-hidden;
+    @apply bg-body text-white overflow-x-hidden;
   }
   input {
-    @apply bg-transparent outline-none mx-2;
+    @apply bg-transparent outline-none mx-2 text-white;
   }
   h2 {
     @apply text-black dark:text-white text-xl;
@@ -22,13 +37,15 @@
   h3,
   h4,
   h5,
-  p,
   label,
   span,
   em {
-    @apply text-black dark:text-white;
+    @apply text-white;
+  }
+  p {
+    @apply text-gray1;
   }
   textarea {
-    @apply bg-transparent outline-none dark:text-white mx-2;
+    @apply bg-transparent outline-none text-white mx-2;
   }
 }

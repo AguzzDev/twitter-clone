@@ -4,8 +4,8 @@ export const UserSchema = yup.object().shape({
   name: yup
     .string()
     .max(30, "Maximo 30 caracteres")
-    .required("Nombre es requerido"),
-  email: yup.string().email("Email no valido").required("Email es requerido"),
+    .required("El nombre es requerido"),
+  email: yup.string().email("Email no valido").required("El email es requerido"),
   mes: yup.string().required("Requerido"),
   dia: yup.string().required("Requerido"),
   anio: yup.string().required("Requerido"),

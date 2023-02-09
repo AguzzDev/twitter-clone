@@ -1,7 +1,7 @@
 import { PlusCircleIcon } from '@heroicons/react/solid'
 import React from 'react'
 
-import SendIcon from '../../assets/svg/SendIcon'
+import SendIcon from '../assets/svg/SendIcon'
 import { Avatar } from '../avatar'
 import { IconsSm } from '../icons'
 

@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/globals.css';
-import App from './App';
+import React from "react"
+import ReactDOM from "react-dom"
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+import App from "./App"
+import "./styles/globals.css"
 
+ReactDOM.render(<App />, document.getElementById("root"))
+
+serviceWorkerRegistration.register();

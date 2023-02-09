@@ -1,16 +1,29 @@
 import { ChevronDoubleUpIcon, MailOpenIcon } from "@heroicons/react/solid"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-import { SearchAside } from "./SearchAside"
 import { SeguirRecomendaciones } from "./SeguirRecomendaciones"
 import { Trending } from "./Trending"
 import { IconsSmd } from "./icons"
 import { NavMenu } from "./NavMenu"
+import { getTrends } from "store/actions/tweets"
+import { getAllUsers } from "store/actions/profile"
+import { SearchInput } from "components/Input/SearchInput"
 
 const Layout = ({ children }) => {
+  const dispatch = useDispatch()
+  const { trends } = useSelector((state) => state.tweets)
+  const { profiles } = useSelector((state) => state.profile)
+  
+  useEffect(() => {
+    dispatch(getAllUsers())
+    dispatch(getTrends())
+  }, [dispatch])
+
   return (
-    <div className="relative">
-      <div className="flex flex-row md:w-11/12 xl:w-9.5/12 mx-auto">
-        <div className="sticky top-0 w-2/12 h-screen border-r border-graylight dark:border-bordes md:w-1/12 xl:w-3/12">
+    <main className="relative">
+      <section className="flex flex-row md:w-11/12 xl:w-9.5/12 mx-auto">
+        <div className="sticky top-0 w-2/12 h-screen border-r border-bordes md:w-1/12 xl:w-3/12">
           <NavMenu />
         </div>
 
@@ -18,18 +31,16 @@ const Layout = ({ children }) => {
           {children}
         </div>
 
-        <div
-          className="hidden flex-col w-4/12 md:flex xl:w-4/12"
-          style={{ height: "1200px" }}
-        >
-          <div className="px-8">
-            <SearchAside />
-            <Trending />
-            <SeguirRecomendaciones />
+        <div className="max-h-[65rem] hidden flex-col w-4/12 md:flex xl:w-4/12 mb-5">
+          <div className="px-8 mt-2">
+            <SearchInput />
+            <Trending trends={trends} />
+            <SeguirRecomendaciones profiles={profiles} />
           </div>
         </div>
-      </div>
-      <div
+      </section>
+
+      <section
         className="fixed z-50 items-center justify-between hidden px-5 py-3 bg-white shadow-xl cursor-pointer dark:bg-body lg:flex -bottom-2 right-10 rounded-xl"
         style={{
           boxShadow:
@@ -54,8 +65,8 @@ const Layout = ({ children }) => {
             <IconsSmd Icon={ChevronDoubleUpIcon} />
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

@@ -10,11 +10,15 @@ const userSchema = mongoose.Schema(
     anio: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    confirmpassword: { type: String, required: true },
-    isAdmin: { type: Boolean, default: false },
+    range: { type: String, enum: ["user", "verified", "own"], default: "user" },
     location: { type: String, default: "Internet" },
     userImage: { type: String, default: "" },
     userBanner: { type: String, default: "" },
+    postLikes: [
+      {
+        postId: { type: String },
+      },
+    ],
   },
   { timestamps: true }
 )

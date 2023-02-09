@@ -1,24 +1,69 @@
-import { types } from "../types/types"
+import { types } from "store/types/types"
 
-export const tweetsReducer = (state = { tweets: [], tweet: [] }, action) => {
+export const tweetsReducer = (
+  state = {
+    tweets: { data: [], loading: true, status: null },
+    tweet: { data: [], loading: true, status: null },
+    trends: { data: [], loading: true, status: null },
+    search: { data: [], loading: true, status: null },
+  },
+  action
+) => {
   switch (action.type) {
-    case types.LoadTweets:
+    case types.uiLoadPost:
       return {
         ...state,
-        tweets: action.payload,
+        [action.payload.value]: {
+          ...state[action.payload.value],
+          data: [],
+          loading: true,
+        },
       }
     case types.LoadOneTweet:
       return {
         ...state,
-        tweet: action.payload,
+        tweet: {
+          data: action.payload.data,
+          loading: false,
+          status: action.payload.status,
+        },
       }
-    case types.TweetDetails:
+    case types.LoadTweets:
+      return {
+        ...state,
+        tweets: {
+          data: action.payload.data,
+          loading: false,
+          status: action.payload.status,
+        },
+      }
+    case types.LoadSearch:
+      return {
+        ...state,
+        search: {
+          data: action.payload.data,
+          loading: false,
+          status: action.payload.status,
+        },
+      }
+    case types.LoadTrends:
+      return {
+        ...state,
+        trends: {
+          data: action.payload.data,
+          loading: false,
+          status: action.payload.status,
+        },
+      }
     case types.CreateTweet: {
       return {
-        tweets: [...state.tweets, action.payload],
+        ...state,
+        tweets: {
+          ...state.tweets,
+          data: [...state.tweets.data, action.payload],
+        },
       }
     }
-    // case types.UpdatedTweet:
     case types.DeleteTweet:
       return {
         ...state,
@@ -26,8 +71,6 @@ export const tweetsReducer = (state = { tweets: [], tweet: [] }, action) => {
           (tweet) => tweet._id !== action.payload._id
         ),
       }
-    case types.LikeTweet:
-      return {}
     default:
       return state
   }

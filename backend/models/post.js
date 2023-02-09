@@ -6,10 +6,32 @@ const postSchema = mongoose.Schema(
     name: { type: String },
     username: { type: String },
     userImage: { type: String },
-    isAdmin: { type: Boolean },
+    range: { type: String },
     content: { type: String },
-    selectedFile: { type: String },
-    likeCount: [{ id: { type: String } }],
+    selectedFile: { type: Array },
+    hash: { type: String },
+    likeCount: [
+      {
+        userId: { type: String },
+      },
+    ],
+    comments: [
+      {
+        userId: { type: String },
+        name: { type: String },
+        username: { type: String },
+        userImage: { type: String },
+        range: { type: String },
+        content: { type: String },
+        selectedFile: { type: Array },
+        createdAt: { type: Date, default: Date.now },
+        likeCount: [
+          {
+            userId: { type: String },
+          },
+        ],
+      },
+    ],
   },
   { timestamps: true }
 )

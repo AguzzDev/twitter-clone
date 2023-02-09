@@ -6,15 +6,8 @@ export function Avatar({ props }) {
 
   return (
     <>
-      <Link to={`/profile/${username.substring(1)}`} className={props}>
-        <img
-          src={
-            userImage
-              ? userImage
-              : `${process.env.PUBLIC_URL}/AvatarDefault.png`
-          }
-          className="w-12 h-12 object-cover rounded-full"
-        />
+      <Link to={`/profile/${username?.substring(1)}`} className={`${props} w-10 h-10 md:w-6 md:h-6 lg:w-12 lg:h-12  rounded-full overflow-hidden`}>
+        <img src={userImage} className="w-full h-full object-cover" />
       </Link>
     </>
   )

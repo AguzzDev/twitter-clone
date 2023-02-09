@@ -5,7 +5,9 @@ import {
   getPosts,
   getPostById,
   likePost,
-  getPostByUser
+  getPostByUser,
+  createComment,
+  deleteComment,
 } from "../controllers/posts.js"
 import { verifyToken } from "../middleware/auth.js"
 
@@ -18,5 +20,6 @@ router.get("/user/:id", getPostByUser)
 router.post("/", verifyToken, createPost)
 router.delete("/:id", verifyToken, deletePost)
 router.put("/:id", verifyToken, likePost)
-
+router.put("/createComments/:id", verifyToken, createComment)
+router.put("/deleteComments/:id", verifyToken, deleteComment)
 export default router

@@ -1,22 +1,35 @@
+import { types } from "store/types/types"
+
 const initialState = {
-  authData: null,
+  data: null,
+  loading: true,
+  error: null,
 }
 
 export const authReducer = (auth = initialState, action) => {
   switch (action.type) {
-    case "AUTH":
-    case "UPDATE":
-      localStorage.setItem("profile", JSON.stringify({ ...action.data }))
+    case types.uiLoadAuth:
+      return {
+        ...auth,
+        loading: true,
+      }
+    case types.login:
+    case types.register:
+    case types.update:
+      !action.payload.error &&
+        localStorage.setItem("profile", JSON.stringify(action.payload.data))
 
       return {
-        ...auth,
-        authData: JSON.parse(localStorage.getItem("profile")),
+        error: action.payload.error,
+        loading: false,
+        data: JSON.parse(localStorage.getItem("profile")) || [],
       }
-    case "LOGOUT":
+    case types.logout:
       localStorage.removeItem("profile")
       return {
-        ...auth,
-        authData: null,
+        error: null,
+        loading: false,
+        data: null,
       }
 
     default:

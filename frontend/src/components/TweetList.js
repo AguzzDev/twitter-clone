@@ -1,51 +1,26 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-
 import TweetItem from "./TweetItem"
-import { getTweets } from "../store/actions/tweets"
+import LoadingSpinner from "assets/svg/LoadingSpinner"
 
-export function TweetList() {
-  const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    dispatch(getTweets())
-    setLoading(false)
-  }, [dispatch])
-
-  const { tweets } = useSelector((state) => state.tweets)
-
-  const [limit, setLimit] = useState(10)
-
-  const moreTweets = () => {
-    setLimit(limit + 10)
-  }
+export function TweetList({ tweets }) {
   return (
     <>
-      {!loading &&
-        tweets
-          .map((tweet, i) => {
-            return (
-              <TweetItem
-                key={i}
-                isAdmin={tweet.isAdmin}
-                userId={tweet._id}
-                userImage={tweet.userImage}
-                id={tweet._id}
-                name={tweet.name}
-                username={tweet.username}
-                createdAt={tweet.createdAt}
-                content={tweet.content}
-                selectedFile={tweet.selectedFile}
-                likeCount={tweet.likeCount}
-                moreTweets={moreTweets}
-              />
-            )
-          })
-          .reverse()
-          .slice(0, limit)}
-      {tweets.length < limit ? null : (
-        <button className="mb-5 font-bold bg-blue1 py-3 px-5 rounded-full w-full text-center text-white dark:text-black" onClick={() => moreTweets()}>Cargar mas</button>
+      {tweets.loading ? (
+        <div className="flex justify-center w-full mt-3">
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <>
+          {tweets.status === 204 ? (
+            <div className="grid place-content-center mt-10">
+              <h1 className="text-2xl font-medium">Aun no hay tweets</h1>
+              <h2>Se el primero!</h2>
+            </div>
+          ) : (
+            tweets.data.map((tweet, i) => {
+              return <TweetItem key={i} tweet={tweet} />
+            })
+          )}
+        </>
       )}
     </>
   )
