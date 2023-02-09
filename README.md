@@ -1,6 +1,6 @@
 # Twitter App Clone
 
-## This page include feactures such as: 
+### This page include feactures such as: 
 
 ### Tweets
 - Create and delete (are allow upload images and emojis)
