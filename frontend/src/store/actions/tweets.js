@@ -46,7 +46,7 @@ export const fetchSearch = (q) => async (dispatch) => {
     dispatch({ type: types.uiLoadPost, payload: { value: "search" } })
     const queryIsHash = q.includes("#") ? q.substring(1) : q
 
-    const { data } = await api.fetchSearch({
+    const { data, status } = await api.fetchSearch({
       query: queryIsHash,
       isTrend: q.includes("#"),
     })
