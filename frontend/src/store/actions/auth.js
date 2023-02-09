@@ -3,7 +3,7 @@ import { types } from "store/types/types"
 
 export const login = (formData, history) => async (dispatch) => {
   dispatch({ type: types.uiLoadAuth })
-  const response = await fetch("http://localhost:5000/users/login", {
+  const response = await fetch("https://twitter-backend-bdv9.onrender.com/users/login", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {
@@ -22,7 +22,7 @@ export const login = (formData, history) => async (dispatch) => {
 }
 
 export const register = (value, history) => async (dispatch) => {
-  const response = await fetch("http://localhost:5000/users/register", {
+  const response = await fetch("https://twitter-backend-bdv9.onrender.com/users/register", {
     method: "POST",
     body: JSON.stringify(value),
     headers: {
