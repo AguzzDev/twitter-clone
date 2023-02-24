@@ -5,7 +5,7 @@
 ### Tweets
 - Create and delete (are allow upload images and emojis)
 - Like tweet
-- View Tweet
+- Tweet view
 - Comment section
 ### User
 - User Profile
