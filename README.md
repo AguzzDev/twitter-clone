@@ -15,6 +15,6 @@
 ### Search
 - Tweets that include the parameter
 ### Trendic Topic
-- tweets trends of last 24hs (filter only words that starts with #)
+- Tweets trends of last 24hs (filter only words that starts with #)
 
 *AguzzDev*
