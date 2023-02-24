@@ -1,17 +1,17 @@
 export const fileUpload = async (file) => {
   const cloudUrl = process.env.REACT_APP_CLOUDINARY_URL
 
-  let data = []
+  const data = []
   for (let x = 0; x < file.length; x++) {
     const formData = new FormData()
-    formData.append("upload_preset", "Twitter")
-    formData.append("cloud_name", process.env.REACT_APP_CLOUDINARY_NAME)
-    formData.append("file", file[x].image)
+    formData.append('upload_preset', 'Twitter')
+    formData.append('cloud_name', process.env.REACT_APP_CLOUDINARY_NAME)
+    formData.append('file', file[x].image)
 
     try {
       const resp = await fetch(cloudUrl, {
-        method: "POST",
-        body: formData,
+        method: 'POST',
+        body: formData
       })
       if (resp.ok) {
         const cloudResp = await resp.json()

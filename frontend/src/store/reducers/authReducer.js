@@ -1,9 +1,9 @@
-import { types } from "store/types/types"
+import { types } from 'store/types/types'
 
 const initialState = {
   data: null,
   loading: true,
-  error: null,
+  error: null
 }
 
 export const authReducer = (auth = initialState, action) => {
@@ -11,25 +11,26 @@ export const authReducer = (auth = initialState, action) => {
     case types.uiLoadAuth:
       return {
         ...auth,
-        loading: true,
+        loading: true
       }
     case types.login:
     case types.register:
     case types.update:
+      console.log(action.payload)
       !action.payload.error &&
-        localStorage.setItem("profile", JSON.stringify(action.payload.data))
+        window.localStorage.setItem('profile', JSON.stringify(action.payload.data))
 
       return {
         error: action.payload.error,
         loading: false,
-        data: JSON.parse(localStorage.getItem("profile")) || [],
+        data: JSON.parse(window.localStorage.getItem('profile')) || []
       }
     case types.logout:
-      localStorage.removeItem("profile")
+      window.localStorage.removeItem('profile')
       return {
         error: null,
         loading: false,
-        data: null,
+        data: null
       }
 
     default:

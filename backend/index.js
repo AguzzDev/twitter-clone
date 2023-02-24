@@ -16,14 +16,9 @@ import searchRoutes from "./routes/search.js"
 const app = express()
 const server = http.createServer(app)
 
-const Whitelist = [
-  "http://localhost:3000",
-  "https://aguzzdev-twitter.netlify.app",
-]
-
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
-app.use(cors({ origin: Whitelist }))
+app.use(cors({ origin: "https://aguzzdev-twitter.netlify.app" }))
 app.use(morgan("dev"))
 
 app.use("/posts", postRoutes)

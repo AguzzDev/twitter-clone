@@ -1,9 +1,9 @@
-import * as api from "api"
-import { types } from "store/types/types"
+import * as api from 'api'
+import { types } from 'store/types/types'
 
 export const getTweets = () => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadPost, payload: { value: "tweets" } })
+    dispatch({ type: types.uiLoadPost, payload: { value: 'tweets' } })
     const { data, status } = await api.fetchPosts()
 
     dispatch({ type: types.LoadTweets, payload: { data, status } })
@@ -13,7 +13,7 @@ export const getTweets = () => async (dispatch) => {
 }
 export const getTrends = () => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadPost, payload: { value: "trends" } })
+    dispatch({ type: types.uiLoadPost, payload: { value: 'trends' } })
     const { data, status } = await api.fetchTrends()
 
     dispatch({ type: types.LoadTrends, payload: { data, status } })
@@ -23,7 +23,7 @@ export const getTrends = () => async (dispatch) => {
 }
 export const getPostsById = (id) => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadPost, payload: { value: "tweet" } })
+    dispatch({ type: types.uiLoadPost, payload: { value: 'tweet' } })
     const { data, status } = await api.fetchPostById(id)
 
     dispatch({ type: types.LoadOneTweet, payload: { data, status } })
@@ -33,7 +33,7 @@ export const getPostsById = (id) => async (dispatch) => {
 }
 export const getPostsByUser = (id) => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadPost, payload: { value: "tweets" } })
+    dispatch({ type: types.uiLoadPost, payload: { value: 'tweets' } })
     const { data, status } = await api.getPostByUser(id)
 
     dispatch({ type: types.LoadTweets, payload: { data, status } })
@@ -43,12 +43,12 @@ export const getPostsByUser = (id) => async (dispatch) => {
 }
 export const fetchSearch = (q) => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadPost, payload: { value: "search" } })
-    const queryIsHash = q.includes("#") ? q.substring(1) : q
+    dispatch({ type: types.uiLoadPost, payload: { value: 'search' } })
+    const queryIsHash = q.includes('#') ? q.substring(1) : q
 
     const { data, status } = await api.fetchSearch({
       query: queryIsHash,
-      isTrend: q.includes("#"),
+      isTrend: q.includes('#')
     })
     dispatch({ type: types.LoadSearch, payload: { data, status } })
   } catch (error) {
@@ -69,7 +69,7 @@ export const createPost = (post) => async (dispatch) => {
 export const likePost = (id, history) => async (dispatch) => {
   try {
     await api.likePost(id)
-    history.location.pathname.includes("status")
+    history.location.pathname.includes('status')
       ? dispatch(getPostsById(id))
       : dispatch(getTweets())
   } catch (error) {
@@ -78,28 +78,28 @@ export const likePost = (id, history) => async (dispatch) => {
 }
 export const createComment =
   ({ data, id }) =>
-  async (dispatch) => {
-    try {
-      await api.createComment(data, id)
-      dispatch(getPostsById(id))
-    } catch (error) {
-      console.log(error.message)
+    async (dispatch) => {
+      try {
+        await api.createComment(data, id)
+        dispatch(getPostsById(id))
+      } catch (error) {
+        console.log(error.message)
+      }
     }
-  }
 export const deleteComment =
   ({ tweetId, id }) =>
-  async (dispatch) => {
-    try {
-      await api.deleteComment(tweetId, id)
-      dispatch(getPostsById(tweetId))
-    } catch (error) {
-      console.log(error.message)
+    async (dispatch) => {
+      try {
+        await api.deleteComment(tweetId, id)
+        dispatch(getPostsById(tweetId))
+      } catch (error) {
+        console.log(error.message)
+      }
     }
-  }
 export const deletePost = (id, history) => async (dispatch) => {
   try {
     const { data } = await api.deletePost(id)
-    history.push("/home")
+    history.push('/home')
 
     dispatch({ type: types.DeleteTweet, payload: data })
   } catch (error) {

@@ -3,39 +3,46 @@ import { types } from "store/types/types"
 
 export const login = (formData, history) => async (dispatch) => {
   dispatch({ type: types.uiLoadAuth })
-  const response = await fetch("https://twitter-backend-bdv9.onrender.com/users/login", {
-    method: "POST",
-    body: JSON.stringify(formData),
-    headers: {
-      "Content-type": "application/json",
-    },
-  })
-  const data = await response.json()
+  const response = await fetch(
+    "https://twitter-backend-bdv9.onrender.com/users/login",
+    {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  )
+  const result = await response.json()
 
   dispatch({
     type: types.login,
-    payload: { data, error: data.message || null },
+    payload: { data: result, error: result.message || null },
   })
-  if (!data.message) {
+
+  if (!result.message) {
     history.go("/home")
   }
 }
 
 export const register = (value, history) => async (dispatch) => {
-  const response = await fetch("https://twitter-backend-bdv9.onrender.com/users/register", {
-    method: "POST",
-    body: JSON.stringify(value),
-    headers: {
-      "Content-type": "application/json",
-    },
-  })
-  const data = await response.json()
+  const response = await fetch(
+    "https://twitter-backend-bdv9.onrender.com/users/register",
+    {
+      method: "POST",
+      body: JSON.stringify(value),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  )
+  const result = await response.json()
 
   dispatch({
     type: types.register,
-    payload: { data, error: data.message || null },
+    payload: { data: result, error: result.message || null },
   })
-  if (!data.message) {
+  if (!result.message) {
     history.go("/home")
   }
 }

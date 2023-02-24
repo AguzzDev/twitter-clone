@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export const useDropzone = () => {
   const [data, setData] = useState({
-    userImage: "/AvatarDefault.png",
-    userBanner: "/Twitter-banner.png",
+    userImage: '/AvatarDefault.png',
+    userBanner: '/Twitter-banner.png'
   })
 
   const dropzoneFiles = (files, field) => {
@@ -20,6 +20,6 @@ export const useDropzone = () => {
 
   return {
     data,
-    dropzoneFiles,
+    dropzoneFiles
   }
 }

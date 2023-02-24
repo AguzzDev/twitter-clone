@@ -10,7 +10,7 @@ const jwtSecret = process.env.JWT_SECRET
 
 export const login = async (req, res) => {
   const { usernameOrEmail, password } = req.body
-  
+  console.log(req.body)
   try {
     const existingUser = await User.findOne({
       $or: [{ username: `@${usernameOrEmail}` }, { email: usernameOrEmail }],
@@ -32,7 +32,7 @@ export const login = async (req, res) => {
       jwtSecret,
       { expiresIn: "30d" }
     )
-
+    console.log(existingUser._doc)
     const { email, password: p, ...others } = existingUser._doc
     res.status(200).json({ ...others, token })
   } catch (error) {
@@ -60,7 +60,7 @@ export const register = async (req, res) => {
 
     const userValues = {
       ...values,
-      username: `@${values.username.trim().replace("@","")}`,
+      username: `@${values.username.trim().replace("@", "")}`,
       password: hashPassword,
     }
 

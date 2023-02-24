@@ -1,9 +1,9 @@
-import * as api from "api"
-import { types } from "store/types/types"
+import * as api from 'api'
+import { types } from 'store/types/types'
 
 export const getUserById = (id) => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadProfile, payload: { value: "profile" } })
+    dispatch({ type: types.uiLoadProfile, payload: { value: 'profile' } })
     const { data, status } = await api.getUserById(id)
 
     dispatch({ type: types.getProfile, payload: { data, status } })
@@ -14,7 +14,7 @@ export const getUserById = (id) => async (dispatch) => {
 
 export const getPostsLiked = () => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadProfile, payload: { value: "postLiked" } })
+    dispatch({ type: types.uiLoadProfile, payload: { value: 'postLiked' } })
     const { data, status } = await api.getPostsLiked()
 
     dispatch({ type: types.getPostsLiked, payload: { data, status } })
@@ -25,7 +25,7 @@ export const getPostsLiked = () => async (dispatch) => {
 
 export const getAllUsers = () => async (dispatch) => {
   try {
-    dispatch({ type: types.uiLoadProfile, payload: { value: "profiles" } })
+    dispatch({ type: types.uiLoadProfile, payload: { value: 'profiles' } })
     const { data, status } = await api.getAllUsers()
 
     dispatch({ type: types.getAllUsers, payload: { data, status } })

@@ -1,9 +1,9 @@
-import { types } from "store/types/types"
+import { types } from 'store/types/types'
 
 const initialState = {
   profile: { data: [], loading: true, status: null },
   profiles: { data: [], loading: true, status: null },
-  postLiked: { data: [], loading: true, status: null },
+  postLiked: { data: [], loading: true, status: null }
 }
 
 export const profileReducer = (state = initialState, action) => {
@@ -14,8 +14,8 @@ export const profileReducer = (state = initialState, action) => {
         [action.payload.value]: {
           ...state[action.payload.value],
           data: [],
-          loading: true,
-        },
+          loading: true
+        }
       }
     case types.getProfile:
       return {
@@ -23,8 +23,8 @@ export const profileReducer = (state = initialState, action) => {
         profile: {
           data: action.payload.data,
           loading: false,
-          status: action.payload.status,
-        },
+          status: action.payload.status
+        }
       }
     case types.getAllUsers:
       return {
@@ -32,8 +32,8 @@ export const profileReducer = (state = initialState, action) => {
         profiles: {
           data: action.payload.data,
           loading: false,
-          status: action.payload.status,
-        },
+          status: action.payload.status
+        }
       }
     case types.getPostsLiked:
       return {
@@ -41,8 +41,8 @@ export const profileReducer = (state = initialState, action) => {
         postLiked: {
           data: action.payload.data,
           loading: false,
-          status: action.payload.status,
-        },
+          status: action.payload.status
+        }
       }
     default:
       return state

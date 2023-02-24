@@ -1,10 +1,10 @@
-describe("Login on Twitter", () => {
+describe('Login on Twitter', () => {
   beforeEach(() => {
-    cy.visit("/")
+    cy.visit('/')
   })
 
-  it("login account", () => {
-    cy.contains("Inicia sesión").click()
-    cy.login({ usernameOrEmail: "AguzzDev", password: "asdasdasd" })
+  it('login account', () => {
+    cy.contains('Inicia sesión').click()
+    cy.login({ usernameOrEmail: 'AguzzDev', password: 'asdasdasd' })
   })
 })
