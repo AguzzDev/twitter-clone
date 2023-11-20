@@ -15,7 +15,7 @@ export default function Home () {
 
   return (
     <Layout>
-      <div>
+      <section>
         <div className='flex flex-col border-graylight dark:border-bordes'>
           <div className='flex flex-row justify-between p-3 bg-white border-b dark:bg-body border-graylight dark:border-bordes'>
             <h1 className='text-xl font-bold dark:text-white '>Inicio</h1>
@@ -32,7 +32,7 @@ export default function Home () {
           <TwitterInputBox />
         </div>
         <TweetList tweets={tweets} />
-      </div>
+      </section>
     </Layout>
   )
 }

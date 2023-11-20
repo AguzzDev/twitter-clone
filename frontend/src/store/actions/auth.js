@@ -1,68 +1,62 @@
-import * as api from "api"
-import { types } from "store/types/types"
+import * as api from "api";
+import { types } from "store/types/types";
 
 export const login = (formData, history) => async (dispatch) => {
-  dispatch({ type: types.uiLoadAuth })
-  const response = await fetch(
-    "https://twitter-backend-bdv9.onrender.com/users/login",
-    {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }
-  )
-  const result = await response.json()
+  try {
+    dispatch({ type: types.uiLoadAuth });
 
-  dispatch({
-    type: types.login,
-    payload: { data: result, error: result.message || null },
-  })
+    const { data } = await api.login(formData);
 
-  if (!result.message) {
-    history.go("/home")
+    dispatch({
+      type: types.login,
+      payload: { data },
+    });
+
+    history.go("/");
+  } catch (error) {
+    dispatch({
+      type: types.login,
+      payload: { error: error.response.data },
+    });
   }
-}
+};
 
 export const register = (value, history) => async (dispatch) => {
-  const response = await fetch(
-    "https://twitter-backend-bdv9.onrender.com/users/register",
-    {
-      method: "POST",
-      body: JSON.stringify(value),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }
-  )
-  const result = await response.json()
+  try {
+    dispatch({ type: types.uiLoadAuth });
 
-  dispatch({
-    type: types.register,
-    payload: { data: result, error: result.message || null },
-  })
-  if (!result.message) {
-    history.go("/home")
+    const { data } = await api.register(value);
+
+    dispatch({
+      type: types.register,
+      payload: { data },
+    });
+
+    history.go("/");
+  } catch (error) {
+    dispatch({
+      type: types.register,
+      payload: { error: error.response.data },
+    });
   }
-}
+};
 
 export const logout = (history) => async (dispatch) => {
   try {
-    dispatch({ type: types.logout })
+    dispatch({ type: types.logout });
 
-    history.go("/")
+    history.go("/");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const deleteAccount = (id) => async (dispatch) => {
   try {
-    await api.deleteAccount(id)
+    await api.deleteAccount(id);
 
-    dispatch({ type: types.logout })
+    dispatch({ type: types.logout });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

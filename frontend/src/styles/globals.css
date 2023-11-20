@@ -15,17 +15,17 @@
 @tailwind utilities;
 
 @layer components {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+  body {
+    @apply bg-body text-white;
+  }
   .placeholder-base::placeholder {
     @apply text-base;
   }
   ::placeholder {
     @apply text-bluelight1 text-xl;
-  }
-  * {
-    @apply p-0 m-0 box-border;
-  }
-  body {
-    @apply bg-body text-white overflow-x-hidden;
   }
   input {
     @apply bg-transparent outline-none mx-2 text-white;
