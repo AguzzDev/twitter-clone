@@ -1,3 +1,3 @@
-export function userWithoutAtSign (name) {
-  return name.substring(1)
+export function userWithoutAtSign(name) {
+  return name?.substring(1);
 }
