@@ -33,7 +33,7 @@ export const DropdownNavUser = () => {
 
         <Menu.Portal>
           <Menu.Content
-            className="w-[15vw] bg-body rounded-lg cursor-pointer select-none"
+            className="bg-body rounded-lg cursor-pointer select-none"
             style={{
               boxShadow:
                 "rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px",
@@ -48,9 +48,6 @@ export const DropdownNavUser = () => {
               </div>
               <div className="flex flex-col w-3/4 text-left ml-2">
                 <UserVerificateNav />
-              </div>
-              <div className="fill-current text-blue1">
-                <IconsSm Icon={CheckIcon} />
               </div>
             </Menu.Item>
 

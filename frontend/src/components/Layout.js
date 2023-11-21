@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   return (
     <main className="relative">
       <section className="flex flex-row">
-        <div className="w-2/12 flex justify-end sticky top-0 h-screen border-r border-bordes">
+        <div className="h-screen w-2/12 flex justify-end sticky top-0 border-r border-bordes">
           <NavMenu />
         </div>
 

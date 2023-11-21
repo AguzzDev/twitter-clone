@@ -7,7 +7,7 @@ export function Avatar ({ props }) {
   return (
     <>
       <Link to={`/profile/${username?.substring(1)}`} className={`${props} w-10 h-10 md:w-6 md:h-6 lg:w-12 lg:h-12  rounded-full overflow-hidden`}>
-        <img src={userImage} className='w-12 h-12 object-cover rounded-full' />
+        <img src={userImage} className='w-10 h-10 object-cover rounded-full' />
       </Link>
     </>
   )
