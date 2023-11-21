@@ -73,7 +73,7 @@ export const TweetItem = ({ tweet, comment }) => {
   const Content = () => {
     return (
       <div className={`${path === 4 ? "flex-col" : "flex-row"} flex pb-5`}>
-        <div className="flex w-[13%] sm:w-[10%]">
+        <div className="flex w-[13%] sm:w-[10%] xl:w-[7%]">
           <Link to={`/profile/${userWithoutAtSign(username)}`}>
             <img
               src={userImage}
@@ -104,8 +104,8 @@ export const TweetItem = ({ tweet, comment }) => {
         </div>
         <div
           className={`${
-            path === 4 ? "xl:px-0 pl-0" : "pl-3 lg:pl-1 xl:px-5"
-          } flex flex-col w-[87%] sm:w-[90%]`}
+            path === 4 ? "xl:px-0 pl-0" : "xl:px-5"
+          } flex flex-col w-[87%] sm:w-[90%] xl:w-[93%] pl-3`}
         >
           {path !== 4 && (
             <div className="flex w-11/12 xl:w-full">
@@ -180,7 +180,7 @@ export const TweetItem = ({ tweet, comment }) => {
         </>
       )}
 
-      <div className={`${path === 4 ? "ml-0" : "ml-16"} flex justify-between`}>
+      <div className={`${path === 4 ? "ml-0" : "ml-14"} flex justify-between`}>
         {!comment && (
           <div className="space-x-14">
             <ButtonBar type={likePost}>
