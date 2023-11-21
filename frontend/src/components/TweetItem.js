@@ -73,7 +73,7 @@ export const TweetItem = ({ tweet, comment }) => {
   const Content = () => {
     return (
       <div className={`${path === 4 ? "flex-col" : "flex-row"} flex pb-5`}>
-        <div className={`${path !== 4 ? "w-[10%]" : "w-full space-x-3"} flex`}>
+        <div className="flex w-[13%] sm:w-[10%]">
           <Link to={`/profile/${userWithoutAtSign(username)}`}>
             <img
               src={userImage}
@@ -104,8 +104,8 @@ export const TweetItem = ({ tweet, comment }) => {
         </div>
         <div
           className={`${
-            path === 4 ? "w-[90%] xl:px-0 pl-0" : "w-[90%] pl-1 xl:px-5"
-          } flex flex-col`}
+            path === 4 ? "xl:px-0 pl-0" : "pl-3 lg:pl-1 xl:px-5"
+          } flex flex-col w-[87%] sm:w-[90%]`}
         >
           {path !== 4 && (
             <div className="flex w-11/12 xl:w-full">
@@ -150,7 +150,7 @@ export const TweetItem = ({ tweet, comment }) => {
   };
 
   return (
-    <section
+    <article
       className={`${
         path !== 4 &&
         "cursor-pointer hover:bg-gray1 hover:bg-opacity-10 dark:hover:bg-opacity-10"
@@ -179,6 +179,7 @@ export const TweetItem = ({ tweet, comment }) => {
           ) : null}
         </>
       )}
+
       <div className={`${path === 4 ? "ml-0" : "ml-16"} flex justify-between`}>
         {!comment && (
           <div className="space-x-14">
@@ -222,7 +223,7 @@ export const TweetItem = ({ tweet, comment }) => {
           Eliminar
         </button>
       </DeleteModal>
-    </section>
+    </article>
   );
 };
 

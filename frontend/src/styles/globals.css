@@ -19,7 +19,7 @@
     @apply p-0 m-0 box-border;
   }
   body {
-    @apply bg-body text-white;
+    @apply bg-body text-white overflow-x-hidden;
   }
   .placeholder-base::placeholder {
     @apply text-base;

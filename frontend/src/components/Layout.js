@@ -22,22 +22,22 @@ const Layout = ({ children }) => {
 
   return (
     <main className="relative">
-      <section className="flex flex-row">
-        <div className="h-screen w-2/12 flex justify-end sticky top-0 border-r border-bordes">
+      <section className="flex">
+        <section className="h-screen w-[15%] flex justify-end sticky top-0 border-r border-bordes">
           <NavMenu />
-        </div>
+        </section>
 
-        <div className="w-10/12 md:w-7/12 xl:w-5/12 border-r shadow-sm border-graylight dark:border-bordes">
+        <section className="w-[85%] md:w-[50%] border-r shadow-sm border-graylight dark:border-bordes">
           {children}
-        </div>
+        </section>
 
-        <div className="hidden md:flex w-5/12 max-h-[65rem] flex-col mb-5 pr-12">
+        <section className="hidden md:flex w-[35%] max-h-[65rem] flex-col mb-5">
           <div className="px-8 mt-2">
             <SearchInput />
             <Trending trends={trends} />
             <SeguirRecomendaciones profiles={profiles} />
           </div>
-        </div>
+        </section>
       </section>
 
       <section
