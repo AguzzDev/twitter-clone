@@ -105,7 +105,7 @@ export const TweetItem = ({ tweet, comment }) => {
         <div
           className={`${
             path === 4 ? "xl:px-0 pl-0" : "w-11/12 pl-1 xl:px-5"
-          } flex flex-col mt-1 `}
+          } flex flex-col`}
         >
           {path !== 4 && (
             <div className="flex w-11/12 xl:w-full">
