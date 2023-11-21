@@ -27,11 +27,11 @@ const Layout = ({ children }) => {
           <NavMenu />
         </div>
 
-        <div className="w-10/12 md:w-7/12 xl:w-6/12 border-r shadow-sm border-graylight dark:border-bordes">
+        <div className="w-10/12 md:w-7/12 xl:w-5/12 border-r shadow-sm border-graylight dark:border-bordes">
           {children}
         </div>
 
-        <div className="hidden md:flex w-4/12 max-h-[65rem] flex-col mb-5 pr-12">
+        <div className="hidden md:flex w-5/12 max-h-[65rem] flex-col mb-5 pr-12">
           <div className="px-8 mt-2">
             <SearchInput />
             <Trending trends={trends} />
