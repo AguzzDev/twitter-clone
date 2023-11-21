@@ -72,8 +72,8 @@ export const TweetItem = ({ tweet, comment }) => {
   };
   const Content = () => {
     return (
-      <div className={`${path === 4 ? "flex-col" : "flex-row"} flex space-x-3 pb-5`}>
-        <div className="w-12 h-12">
+      <div className={`${path === 4 ? "flex-col" : "flex-row"} flex pb-5`}>
+        <div className={`${path !== 4 ? "w-[10%]" : "w-full space-x-3"} flex`}>
           <Link to={`/profile/${userWithoutAtSign(username)}`}>
             <img
               src={userImage}
@@ -82,7 +82,7 @@ export const TweetItem = ({ tweet, comment }) => {
           </Link>
 
           {path === 4 && (
-            <div>
+            <>
               <div className="flex">
                 <h1 className="font-medium dark:text-white">
                   {UserVerificateRow({ name, username, range })}
@@ -99,12 +99,12 @@ export const TweetItem = ({ tweet, comment }) => {
                   </span>
                 </p>
               )}
-            </div>
+            </>
           )}
         </div>
         <div
           className={`${
-            path === 4 ? "xl:px-0 pl-0" : "w-11/12 pl-1 xl:px-5"
+            path === 4 ? "w-[90%] xl:px-0 pl-0" : "w-[90%] pl-1 xl:px-5"
           } flex flex-col`}
         >
           {path !== 4 && (
@@ -122,15 +122,8 @@ export const TweetItem = ({ tweet, comment }) => {
           )}
           <div className="flex flex-col w-full mt-1">
             {content ? (
-              <p className="w-full flex mb-2 text-lg font-[450] text-white break-words">
-                {content.split(" ").map((v, i) => (
-                  <span
-                    key={i}
-                    className={`${v.includes("#") ? "text-blue1" : "mr-[5px]"}`}
-                  >
-                    {v}
-                  </span>
-                ))}
+              <p className="text-lg font-[450] text-white break-words">
+                {content}
               </p>
             ) : null}
             {selectedFileL > 0 && (
@@ -155,6 +148,7 @@ export const TweetItem = ({ tweet, comment }) => {
       </div>
     );
   };
+
   return (
     <section
       className={`${
