@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
           {children}
         </section>
 
-        <section className="hidden md:flex w-[35%] max-h-[65rem] flex-col mb-5">
+        <section className="hidden md:flex w-[35%] lg:w-[30%] max-h-[65rem] flex-col mb-5">
           <div className="px-8 mt-2">
             <SearchInput />
             <Trending trends={trends} />
