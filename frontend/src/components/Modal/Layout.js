@@ -1,5 +1,5 @@
-import React from 'react'
-import Modal from 'react-modal'
+import React from "react";
+import Modal from "react-modal";
 
 export const Layout = ({ children, setOpen, open, props }) => {
   return (
@@ -7,9 +7,9 @@ export const Layout = ({ children, setOpen, open, props }) => {
       isOpen={open}
       onRequestClose={() => setOpen(false)}
       className={`${props} bg-body`}
-      overlayClassName='modal-fondo'
+      overlayClassName="modal-fondo"
     >
       {children}
     </Modal>
-  )
-}
+  );
+};

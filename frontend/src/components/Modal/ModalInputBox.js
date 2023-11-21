@@ -10,7 +10,10 @@ export const ModalInputBox = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button className="w-max p-2 rounded-full bg-blue1 hover:bg-blue3" onClick={() => setOpen(true)}>
+      <button
+        className="w-max p-2 rounded-full bg-blue1 hover:bg-blue3"
+        onClick={() => setOpen(true)}
+      >
         <PencilIcon className="w-7 text-white rounded-full" />
       </button>
 

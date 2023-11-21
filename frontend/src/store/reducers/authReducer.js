@@ -21,7 +21,7 @@ export const authReducer = (state = initialState, action) => {
           "profile",
           JSON.stringify(action.payload.data)
         );
- 
+
       return {
         error: action.payload.error || state.error,
         loading: false,

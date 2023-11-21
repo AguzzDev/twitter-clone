@@ -19,9 +19,9 @@ export function NavMenu() {
         <ModalInputBox />
       </div>
 
-     <div className="flex items-end h-full mb-2 md:mb-0">
-     <DropdownNavUser />
-     </div>
+      <div className="flex items-end h-full mb-2 md:mb-0">
+        <DropdownNavUser />
+      </div>
     </div>
   );
 }

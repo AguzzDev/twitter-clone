@@ -1,1 +1,1 @@
-export const getUser = JSON.parse(window.localStorage.getItem('profile'))
+export const getUser = JSON.parse(window.localStorage.getItem("profile"));
